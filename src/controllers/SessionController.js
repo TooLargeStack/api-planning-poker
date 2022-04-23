@@ -1,20 +1,40 @@
 
+OPTIONS = {
+    cors: {
+        origin: ['http://localhost:3000','http://localhost:5000', '*'],
+        credentials: true,
+    }
+}
+
 class SessionController {
-    constructor(server) {
-        this.session = require('socket.io')(server);
+
+    constructor() {
         this.cards = null
     }
 
-    connect() {
-        this.session.on('connection', (socket) => {
-            console.log(`Session started, socket: ${socket.id}`)
-            this.onChooseCard(socket)
-            this.showAllPickedCards(socket)
-        })
+    connect(server) {
+        try {
+            const io = require("socket.io")(server, OPTIONS);
+            console.log('connecting')
+            io.on('connection', socket => {
+                console.log(`Session started, socket: ${socket.id}`)
+                this.onChooseCard(socket)
+                this.showAllPickedCards(socket)
+                this.onDisconnect(socket)
+            })
+        } catch (e) {
+            console.log(`Error: ${e}`)
+        }
     }
 
     showAllPickedCards(socket) {
         socket.emit('showAllPickedCards', this.cards)
+    }
+
+    onDisconnect(socket) {
+        socket.on('disconnect', function() {
+            console.log('Client disconnected.');
+        });
     }
 
     onChooseCard(socket) {
