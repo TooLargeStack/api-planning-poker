@@ -1,7 +1,7 @@
 const cors = require('cors')
 const express = require('express');
 
-const sessionController = require('./src/controllers/SessionController')
+const SessionController = require('./src/controllers/SessionController')
 
 const app = express();
 app.use(cors({credentials: true, origin: '*'}));
@@ -9,7 +9,7 @@ app.use(cors({credentials: true, origin: '*'}));
 const server = require('http').createServer(app);
 const port = 5000;
 
-const session = new sessionController()
+const session = SessionController
 session.connect(server)
 
 app.all('/', function (request, response, next) {

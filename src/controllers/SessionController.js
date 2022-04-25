@@ -6,11 +6,9 @@ OPTIONS = {
     }
 }
 
-class SessionController {
+const SessionController = {
 
-    constructor() {
-        this.cards = null
-    }
+    cards: [],
 
     connect(server) {
         try {
@@ -25,22 +23,24 @@ class SessionController {
         } catch (e) {
             console.log(`Error: ${e}`)
         }
-    }
+    },
 
     showAllPickedCards(socket) {
+        console.log('Emit all cards')
         socket.emit('showAllPickedCards', this.cards)
-    }
+    },
 
     onDisconnect(socket) {
         socket.on('disconnect', function() {
             console.log('Client disconnected.');
         });
-    }
+    },
 
     onChooseCard(socket) {
         socket.on('choose', card => {
-            cards.append(card)
-            socket.broadcast.emit('pickedCard', card)
+            console.log('Choosen card received: ', card)
+            this.cards.push(card)
+            socket.broadcast.emit('pickedCard', this.cards)
         })
     }
 }
