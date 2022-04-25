@@ -1,0 +1,33 @@
+{
+  "name": "planning-pocker-api",
+  "version": "1.0.0",
+  "description": "Simple real time api for planning pocker",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leozenbergs/planning-pocker-api.git"
+  },
+  "keywords": [
+    "planning-pocker",
+    "api"
+  ],
+  "author": "Leozenbergs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leozenbergs/planning-pocker-api/issues"
+  },
+  "homepage": "https://github.com/Leozenbergs/planning-pocker-api#readme",
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.15",
+    "socket.io": "^3.1.2"
+  }
+}
