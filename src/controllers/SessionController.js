@@ -1,7 +1,13 @@
 
 OPTIONS = {
     cors: {
-        origin: ['http://localhost:3000','http://localhost:5000', '*'],
+        origin: [
+			'http://localhost:3000',
+			'http://localhost:5000',
+			'*',
+			'https://toolargestack.github.io/planning-poker-client/',
+			'https://toolargestack.github.io/'
+		],
         credentials: true,
     }
 }
