@@ -8,7 +8,7 @@ OPTIONS = {
 
 const SessionController = {
 
-    cards: [],
+    cards: {},
 
     connect(server) {
         try {
@@ -37,9 +37,9 @@ const SessionController = {
     },
 
     onChooseCard(socket) {
-        socket.on('choose', card => {
-            console.log('Choosen card received: ', card)
-            this.cards.push(card)
+        socket.on('choose', ({ username, value }) => {
+            console.log('Choosen card received: ', { username, value })
+            this.cards[username] = value
             socket.broadcast.emit('pickedCard', this.cards)
         })
     }
