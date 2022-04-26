@@ -6,7 +6,8 @@ OPTIONS = {
 			'http://localhost:5000',
 			'*',
 			'https://toolargestack.github.io/planning-poker-client/',
-			'https://toolargestack.github.io'
+			'https://toolargestack.github.io/',
+			'https://planning-poker-session-api.herokuapp.com/'
 		],
         credentials: true,
     }
