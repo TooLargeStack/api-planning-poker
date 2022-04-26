@@ -17,10 +17,10 @@ app.all('/', function (request, response, next) {
     next();
 });
 
-// app.use('/', (req, res) => {
-//     res.send(`aaaa`)
-//     console.log('testing')
-// })
+app.use('/test', (req, res) => {
+    res.send(`aaaa`)
+    console.log('testing')
+})
 
 server.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}`);
