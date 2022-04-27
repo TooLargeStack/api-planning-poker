@@ -7,7 +7,6 @@ const app = express();
 app.use(cors({credentials: true, origin: '*'}));
 
 const server = require('http').createServer(app);
-const port = 5000;
 
 const session = SessionController
 session.connect(server)
@@ -18,12 +17,12 @@ app.all('/', function (request, response, next) {
     next();
 });
 
-app.use('/', (req, res) => {
+app.use('/test', (req, res) => {
     res.send(`aaaa`)
     console.log('testing')
 })
 
-server.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+server.listen(process.env.PORT, () => {
+    console.log(`Example app listening on port ${process.env.PORT}`);
 })
 
