@@ -22,7 +22,7 @@ app.use('/test', (req, res) => {
     console.log('testing')
 })
 
-server.listen(process.env.PORT, () => {
+server.listen(process.env.PORT || 5000, () => {
     console.log(`Example app listening on port ${process.env.PORT}`);
 })
 
