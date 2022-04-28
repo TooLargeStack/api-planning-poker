@@ -27,6 +27,7 @@ const SessionController = {
                 console.log(`Session started, socket: ${socket.id}`)
                 this.onChooseCard(socket)
                 this.showAllPickedCards(socket)
+                this.onResetCards(socket)
                 this.onDisconnect(socket)
             })
         } catch (e) {
@@ -50,6 +51,14 @@ const SessionController = {
             console.log('Choosen card received: ', { username, value })
             this.cards[username] = value
             socket.broadcast.emit('pickedCard', this.cards)
+        })
+    },
+
+    onResetCards(socket) {
+        socket.on('reset', (value) => {
+            console.log('Cards reseted!')
+            this.cards = value
+            socket.broadcast.emit('showAllPickedCards', this.cards)
         })
     }
 }
